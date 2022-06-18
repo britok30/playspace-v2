@@ -9,6 +9,6 @@
 }
 @layer components {
   .navbarButton {
-    @apply text-white cursor-pointer font-light h-10 w-10 rounded-full flex justify-center items-center
+    @apply text-white cursor-pointer font-light h-10 w-10 rounded-full flex justify-center items-center;
   }
 }

@@ -1,10 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Game } from "../types";
 import GameRow from "../components/GameRow";
+import MainImage from "../components/MainImage";
+import Sidebar from "../components/Sidebar";
 
 interface HomeProps {
   allGames: Game[];
@@ -41,7 +42,7 @@ const Home = ({
 
       <Navbar />
 
-      <main className="flex mb-24">
+      <main className="flex mb-24 xl:px-4">
         <div className="mr-4">
           {mainGame && (
             <a
@@ -50,26 +51,7 @@ const Home = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="relative mb-10 -z-10 w-screen md:max-w-[80rem] h-[60vh]">
-                <Image
-                  className="rounded-lg "
-                  src={mainGame?.background_image}
-                  layout="fill"
-                  objectFit="cover"
-                  alt="main-game-image"
-                />
-                <h1 className="text-4xl md:text-8xl absolute bottom-[10rem] left-10 md:left-20 font-bold">
-                  {mainGame.name}
-                </h1>
-
-                <div className="text-xl border p-2 rounded-lg absolute bottom-[5rem] left-10 md:left-20 font-bold">
-                  {mainGame.metacritic || 0} Metacritic
-                </div>
-
-                <div className="w-fit flex absolute bottom-[5rem] left-48 md:left-60 border p-2 rounded-lg">
-                  {mainGame.ratings_count} count
-                </div>
-              </div>
+              <MainImage mainGame={mainGame} />
             </a>
           )}
           <div className="flex flex-col space-y-24 ">
@@ -83,26 +65,7 @@ const Home = ({
           </div>
         </div>
 
-        <div className="bg-[#393e464f] hidden xl:block md:w-[100rem] md:h-[max-content] rounded-lg mr-20 p-8">
-          <>
-            {mainGame?.short_screenshots.map((sh) => {
-              return (
-                <div
-                  key={sh.id}
-                  className="h-28 relative mb-10 opacity-60 hover:opacity-100 hover:scale-105 transition duration-[.4s]"
-                >
-                  <Image
-                    className="rounded-lg mb-3"
-                    src={sh.image}
-                    alt={`${mainGame.name}-screenshots`}
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              );
-            })}
-          </>
-        </div>
+        <Sidebar mainGame={mainGame} games={popularGames} />
       </main>
     </div>
   );
