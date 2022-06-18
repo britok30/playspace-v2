@@ -41,8 +41,8 @@ const Home = ({
 
       <Navbar />
 
-      <div className="flex justify-between">
-        <main className="flex-1 mr-4 pl-16 min-h-screen mb-24">
+      <div className="flex">
+        <main className="flex-1 mr-4 pl-10 md:pl-10 lg:pl-16 min-h-screen mb-24">
           {mainGame && (
             <div className="relative mb-10">
               <a
@@ -52,11 +52,11 @@ const Home = ({
                 rel="noopener noreferrer"
               >
                 <Image
-                  className="rounded-lg opacity-40 hover:opacity-60 transition duration-[.4s]"
+                  className="rounded-lg opacity-40 w-screen hover:opacity-60 transition duration-[.4s]"
                   src={mainGame?.background_image}
-                  width={1000}
+                  width={1200}
                   height={500}
-                  layout="responsive"
+                  layout="fixed"
                   objectFit="cover"
                   alt="main-game-image"
                 />
@@ -81,7 +81,7 @@ const Home = ({
           </div>
         </main>
 
-        <div className="bg-[#393e464f] w-[30rem] h-[max-content] rounded-lg mr-20 p-8">
+        <div className="bg-[#393e464f] hidden xl:block md:w-[30rem] md:h-[max-content] rounded-lg mr-20 p-8">
           <>
             {mainGame?.short_screenshots.map((sh) => {
               return (

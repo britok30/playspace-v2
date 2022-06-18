@@ -28,8 +28,8 @@ const GameRow = ({ games, title }: { games: Game[]; title: string }) => {
   };
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2 md:w-[80rem]">
-      <h2 className="text-2xl font-semibold">{title}</h2>
+    <div className="h-40 space-y-0.5 md:space-y-2 w-[75rem]">
+      <h2 className="text-2xl font-semibold mb-8">{title}</h2>
       <div className="group relative md:ml-2">
         <ChevronLeftIcon
           className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
@@ -38,7 +38,7 @@ const GameRow = ({ games, title }: { games: Game[]; title: string }) => {
           onClick={() => handleClick(Direction.LEFT)}
         />
         <div
-          className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-4 md:p-2"
+          className="flex items-center space-x-6 overflow-x-scroll scrollbar-hide md:space-x-4 md:p-2"
           ref={gameRowRef}
         >
           {games.map((game) => (

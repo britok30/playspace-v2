@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <header className="flex justify-between py-6 px-8 mb-12 md:px-16">
+    <div className="flex min-w-[80rem] justify-between py-6 px-8 mb-12 md:px-16">
       <Image
         src="/playspace.png"
         className="cursor-pointer object-contain"
@@ -31,7 +31,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
