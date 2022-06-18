@@ -1,86 +1,83 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+import Navbar from "../components/Navbar";
+import { Game } from "../types";
+import { HomeIcon } from "@heroicons/react/solid";
+import GameRow from "../components/GameRow";
 
-const Home: NextPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
-  )
+interface HomeProps {
+  games: Game[];
 }
 
-export default Home
+const Home = ({ games }: HomeProps) => {
+  const [mainGame, setMainGame] = useState<Game | null>(null);
+
+  useEffect(() => {
+    if (!games) return;
+    setMainGame(games[Math.floor(Math.random() * games.length)]);
+  }, [games]);
+
+  return (
+    <div className="relative min-h-screen w-screen bg-gradient-to-b">
+      <Head>
+        <title>Playspace V2</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Navbar />
+      <div className="flex justify-between">
+        <nav className="hidden md:block md:pl-16">
+          <ul className="list-none mt-10">
+            <li>
+              <HomeIcon className="text-white w-6 h-6" />
+            </li>
+          </ul>
+        </nav>
+        <main className="flex-2 min-h-screen">
+          {mainGame && (
+            <div className="relative mb-10">
+              <Image
+                className="rounded-lg opacity-60"
+                src={mainGame?.background_image}
+                width={1000}
+                height={500}
+                layout="responsive"
+                objectFit="cover"
+              />
+              <h1 className="text-4xl w-[72rem] absolute bottom-32 left-20 font-bold">
+                {mainGame.name}
+              </h1>
+            </div>
+          )}
+          <section>
+            <GameRow games={games} />
+          </section>
+        </main>
+        <div className="bg-[#393e4691] w-[30rem] h-[50rem] rounded-lg mr-20"></div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
+
+export const getServerSideProps = async () => {
+  const BASE_URL = "https://api.rawg.io/api/games";
+
+  const response = await axios.get(`${BASE_URL}`, {
+    params: {
+      key: `${process.env.NEXT_PUBLIC_API_KEY}`,
+      page_size: 10,
+    },
+  });
+
+  const games = response.data.results;
+
+  return {
+    props: {
+      games,
+    },
+  };
+};
