@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import Thumbnail from "../components/Thumbnail";
 import { Game } from "../types";
@@ -11,6 +11,11 @@ enum Direction {
 const GameRow = ({ games, title }: { games: Game[]; title: string }) => {
   const gameRowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
+
+  useEffect(() => {
+    //randomize order
+    games.sort(() => Math.random() - 0.5);
+  }, [games]);
 
   const handleClick = (direction: Direction) => {
     setIsMoved(true);
