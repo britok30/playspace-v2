@@ -43,15 +43,15 @@ const Home = ({
       <div className="flex">
         <main className="mr-4 md:pl-10 lg:pl-16 min-h-screen mb-24">
           {mainGame && (
-            <div className="relative mb-10 -z-10 w-screen md:w-[80rem] h-[60vh]">
-              <a
-                className="cursor-pointer"
-                href={`https://rawg.io/games/${mainGame.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <a
+              className="cursor-pointer opacity-40 hover:opacity-70 transition duration-[.4s]"
+              href={`https://rawg.io/games/${mainGame.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="relative mb-10 -z-10 w-screen md:w-[80rem] h-[60vh]">
                 <Image
-                  className="rounded-lg opacity-40 hover:opacity-60 transition duration-[.4s]"
+                  className="rounded-lg "
                   src={mainGame?.background_image}
                   layout="fill"
                   objectFit="cover"
@@ -68,8 +68,8 @@ const Home = ({
                 <div className="w-fit flex absolute bottom-[5rem] left-48 md:left-60 border p-2 rounded-lg">
                   {mainGame.ratings_count} count
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
           )}
           <div className="flex flex-col space-y-24 ">
             <GameRow title="Most played games" games={allGames} />
@@ -81,7 +81,7 @@ const Home = ({
             <GameRow title="New PC releases" games={pc} />
           </div>
         </main>
-
+        {console.log(mainGame)}
         <div className="bg-[#393e464f] hidden xl:block md:w-[100rem] md:h-[max-content] rounded-lg mr-20 p-8">
           <>
             {mainGame?.short_screenshots.map((sh) => {
@@ -166,7 +166,7 @@ export const getServerSideProps = async () => {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       dates: `${year}-01-01,${year}-12-31`,
-      platforms: 7,
+      platforms: 4,
     },
   });
 
