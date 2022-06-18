@@ -85,7 +85,7 @@ const Home = ({
           <>
             {mainGame?.short_screenshots.map((sh) => {
               return (
-                <div className="h-28 relative mb-10 opacity-60 hover:opacity-80 hover:scale-105 transition duration-[.4s]">
+                <div className="h-28 relative mb-10 opacity-60 hover:opacity-100 hover:scale-105 transition duration-[.4s]">
                   <Image
                     className="rounded-lg mb-3"
                     src={sh.image}

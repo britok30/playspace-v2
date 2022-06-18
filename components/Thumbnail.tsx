@@ -12,7 +12,7 @@ const Thumbnail = ({ game }: { game: Game }) => {
       >
         <Image
           src={game.background_image}
-          className="rounded-sm opacity-40 hover:opacity-60 object-cover md:rounded transition duration-300"
+          className="rounded-sm opacity-40 hover:opacity-80 object-cover md:rounded transition duration-300"
           layout="fill"
         />
         <div className="absolute bottom-5 left-5">
