@@ -15,6 +15,7 @@ interface HomeProps {
   pc: Game[];
   xbox: Game[];
   eaGames: Game[];
+  metacritic: Game[];
 }
 
 const Home = ({
@@ -23,6 +24,7 @@ const Home = ({
   popularGames,
   playstation,
   xbox,
+  metacritic,
   pc,
   eaGames,
 }: HomeProps) => {
@@ -46,7 +48,7 @@ const Home = ({
         <div className="mr-4">
           {mainGame && (
             <a
-              className="cursor-pointer opacity-40 hover:opacity-70 transition duration-[.4s]"
+              className="cursor-pointer transition duration-[.4s]"
               href={`https://rawg.io/games/${mainGame.slug}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -59,6 +61,7 @@ const Home = ({
             <GameRow title="Most anticipated games" games={anticipatedGames} />
             <GameRow title="Popular games" games={popularGames} />
             <GameRow title="Electronic Arts" games={eaGames} />
+            <GameRow title="Top rated games" games={metacritic} />
             <GameRow title="New Playstation releases" games={playstation} />
             <GameRow title="New Xbox releases" games={xbox} />
             <GameRow title="New PC releases" games={pc} />
@@ -134,6 +137,13 @@ export const getServerSideProps = async () => {
     },
   });
 
+  const metacriticRes = await axios.get(`${BASE_URL}/games`, {
+    params: {
+      key: `${process.env.NEXT_PUBLIC_API_KEY}`,
+      metacritic: `90,100`,
+    },
+  });
+
   const allGames = allGamesRes.data.results;
   const anticipatedGames = anticipatedRes.data.results;
   const popularGames = popularGamesRes.data.results;
@@ -141,6 +151,7 @@ export const getServerSideProps = async () => {
   const playstation = playstationRes.data.results;
   const xbox = xBoxRes.data.results;
   const pc = pcRes.data.results;
+  const metacritic = metacriticRes.data.results;
 
   return {
     props: {
@@ -151,6 +162,7 @@ export const getServerSideProps = async () => {
       playstation,
       xbox,
       pc,
+      metacritic
     },
   };
 };
