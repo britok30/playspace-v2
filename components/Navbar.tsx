@@ -5,17 +5,19 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="flex min-w-[80rem] justify-between py-6 px-8 mb-12 md:px-16">
-      <Image
-        src="/playspace.png"
-        className="cursor-pointer object-contain"
-        width={50}
-        height={50}
-        alt="netflix"
-      />
-      <div className="flex">
+    <div className="flex justify-between items-center py-6 px-8 mb-12 md:px-16">
+      <div className="relative w-20 h-20 mx-auto md:mx-0">
+        <Image
+          src="/playspace.png"
+          className="cursor-pointer object-contain"
+          layout="fill"
+          alt="netflix"
+        />
+      </div>
+
+      <div className="hidden md:flex">
         <input
-          className="w-60 rounded-lg mr-5 bg-[#393E46] text-white px-3 outline-none"
+          className="w-60 h-12 rounded-lg mr-5 bg-[#393E46] text-white px-3 outline-none"
           type="text"
           placeholder="Search"
         />

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Game } from "../types";
 import GameRow from "../components/GameRow";
+import { PlusIcon } from "@heroicons/react/outline";
 
 interface HomeProps {
   allGames: Game[];
@@ -40,11 +41,10 @@ const Home = ({
       </Head>
 
       <Navbar />
-
       <div className="flex">
-        <main className="flex-1 mr-4 pl-10 md:pl-10 lg:pl-16 min-h-screen mb-24">
+        <main className="mr-4 md:pl-10 lg:pl-16 min-h-screen mb-24">
           {mainGame && (
-            <div className="relative mb-10">
+            <div className="relative mb-10 -z-10 w-screen md:w-[80rem] h-[60vh]">
               <a
                 className="cursor-pointer"
                 href={`https://rawg.io/games/${mainGame.slug}`}
@@ -52,25 +52,26 @@ const Home = ({
                 rel="noopener noreferrer"
               >
                 <Image
-                  className="rounded-lg opacity-40 w-screen hover:opacity-60 transition duration-[.4s]"
+                  className="rounded-lg opacity-40 hover:opacity-60 transition duration-[.4s]"
                   src={mainGame?.background_image}
-                  width={1200}
-                  height={500}
-                  layout="fixed"
+                  layout="fill"
                   objectFit="cover"
                   alt="main-game-image"
                 />
-                <h1 className="text-4xl w-[72rem] absolute bottom-[10rem] left-20 font-bold">
+                <h1 className="text-2xl md:text-8xl absolute bottom-[10rem] left-10 md:left-20 font-bold">
                   {mainGame.name}
                 </h1>
+                <div className="w-fit flex absolute bottom-[5rem] left-60 border p-2 rounded-lg">
+                  {mainGame.ratings_count} count
+                </div>
 
-                <div className="text-2xl border p-4 rounded-lg  absolute bottom-[5rem] left-20 font-bold">
+                <div className="text-xl border p-2 rounded-lg absolute bottom-[5rem] left-10 md:left-20 font-bold">
                   {mainGame.metacritic || 0} Metacritic
                 </div>
               </a>
             </div>
           )}
-          <div className="flex flex-col space-y-24">
+          <div className="flex flex-col space-y-24 ">
             <GameRow title="Most played games" games={allGames} />
             <GameRow title="Most anticipated games" games={anticipatedGames} />
             <GameRow title="Popular games" games={popularGames} />
@@ -81,7 +82,7 @@ const Home = ({
           </div>
         </main>
 
-        <div className="bg-[#393e464f] hidden xl:block md:w-[30rem] md:h-[max-content] rounded-lg mr-20 p-8">
+        <div className="bg-[#393e464f] hidden xl:block md:w-[100rem] md:h-[max-content] rounded-lg mr-20 p-8">
           <>
             {mainGame?.short_screenshots.map((sh) => {
               return (

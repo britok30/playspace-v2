@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Thumbnail = ({ game }: { game: Game }) => {
   return (
-    <div className="relative h-28 mb-6 min-w-[180px] cursor-pointer transition duration-[.4s] ease-out md:h-36 md:min-w-[260px] md:hover:scale-105">
+    <div className="relative h-32 mb-6 w-[250px] hover:scale-105 cursor-pointer transition duration-[.4s] ease-out">
       <a
         href={`https://rawg.io/games/${game.slug}`}
         target="_blank"
@@ -12,8 +12,9 @@ const Thumbnail = ({ game }: { game: Game }) => {
       >
         <Image
           src={game.background_image}
-          className="rounded-sm opacity-40 hover:opacity-80 object-cover md:rounded transition duration-300"
+          className="rounded-lg opacity-30"
           layout="fill"
+          objectFit="cover"
           alt="games"
         />
         <div className="absolute bottom-5 left-5">
