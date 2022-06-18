@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center py-6 px-8 mb-12 md:px-16">
+    <div className="flex justify-between items-center py-6 px-8 mb-4">
       <div className="relative w-20 h-20 mx-auto md:mx-0">
         <Image
           src="/playspace.png"
@@ -22,13 +22,13 @@ const Navbar = () => {
           placeholder="Search"
         />
         <div className="flex space-x-4">
-          <div className="text-white font-light bg-gradient-to-r from-rose-500 via-red-400 to-red-500 h-10 w-10 rounded-full flex justify-center items-center">
+          <div className="navbarButton bg-gradient-to-r from-rose-500 via-red-400 to-red-500">
             <BellIcon className="w-5 h-5" />
           </div>
-          <div className="text-white font-light bg-gradient-to-tr from-violet-500 to-orange-300 h-10 w-10 rounded-full flex justify-center items-center">
+          <div className="navbarButton font-light bg-gradient-to-tr from-violet-500 to-orange-300">
             <ShoppingCartIcon className="w-5 h-5" />
           </div>
-          <div className="text-white font-semibold bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 h-10 w-10 rounded-full flex justify-center items-center">
+          <div className="navbarButton bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
             KB
           </div>
         </div>

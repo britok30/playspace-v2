@@ -40,8 +40,9 @@ const Home = ({
       </Head>
 
       <Navbar />
-      <div className="flex">
-        <main className="mr-4 md:pl-10 lg:pl-16 min-h-screen mb-24">
+
+      <main className="flex mb-24">
+        <div className="mr-4">
           {mainGame && (
             <a
               className="cursor-pointer opacity-40 hover:opacity-70 transition duration-[.4s]"
@@ -49,7 +50,7 @@ const Home = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="relative mb-10 -z-10 w-screen md:w-[80rem] h-[60vh]">
+              <div className="relative mb-10 -z-10 w-screen md:max-w-[80rem] h-[60vh]">
                 <Image
                   className="rounded-lg "
                   src={mainGame?.background_image}
@@ -80,8 +81,8 @@ const Home = ({
             <GameRow title="New Xbox releases" games={xbox} />
             <GameRow title="New PC releases" games={pc} />
           </div>
-        </main>
-        {console.log(mainGame)}
+        </div>
+
         <div className="bg-[#393e464f] hidden xl:block md:w-[100rem] md:h-[max-content] rounded-lg mr-20 p-8">
           <>
             {mainGame?.short_screenshots.map((sh) => {
@@ -102,7 +103,7 @@ const Home = ({
             })}
           </>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
