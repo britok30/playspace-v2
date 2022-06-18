@@ -28,7 +28,7 @@ const GameRow = ({ games, title }: { games: Game[]; title: string }) => {
   };
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2 w-screen  md:w-[70rem]">
+    <div className="h-40 space-y-0.5 md:space-y-2 md:w-[70rem]">
       <h2 className="text-2xl font-semibold">{title}</h2>
       <div className="group relative md:ml-2">
         <ChevronLeftIcon

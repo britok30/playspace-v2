@@ -42,7 +42,7 @@ const Home = ({
       <Navbar />
 
       <div className="flex justify-between">
-        <main className="flex-2 pl-16 min-h-screen mb-24">
+        <main className="flex-1 mr-4 pl-16 min-h-screen mb-24">
           {mainGame && (
             <div className="relative mb-10">
               <a
@@ -81,7 +81,6 @@ const Home = ({
         </main>
 
         <div className="bg-[#393e464f] w-[30rem] h-[max-content] rounded-lg mr-20 p-8">
-          <h1 className="text-4xl font-semibold mb-10">Screenshots</h1>
           <>
             {mainGame?.short_screenshots.map((sh) => {
               return (
