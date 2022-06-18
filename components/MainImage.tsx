@@ -8,7 +8,7 @@ const MainImage = ({ mainGame }: { mainGame: Game | null }) => {
   return (
     <div className="relative mb-10 -z-10 w-screen md:max-w-[80rem] h-[60vh]">
       <Image
-        className="rounded-lg "
+        className="rounded-lg opacity-40"
         src={mainGame?.background_image}
         layout="fill"
         objectFit="cover"
@@ -22,8 +22,12 @@ const MainImage = ({ mainGame }: { mainGame: Game | null }) => {
         {mainGame.metacritic || 0} Metacritic
       </div>
 
-      <div className="w-fit flex absolute bottom-[5rem] left-48 md:left-60 border p-2 rounded-lg">
-        {mainGame.ratings_count} count
+      <div className="text-xl w-fit absolute bottom-[5rem] left-48 md:left-60 border p-2 rounded-lg">
+        {mainGame.ratings_count || 0} rating count
+      </div>
+
+      <div className="text-sm w-fit absolute bottom-[2rem] left-10 md:left-20 p-2 rounded-lg">
+        Average playtime: {mainGame.playtime || 0} hours
       </div>
     </div>
   );
