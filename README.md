@@ -1,8 +1,15 @@
 # Playspace V2
 
-<img width="1787" alt="Screen Shot 2022-06-17 at 11 01 34 PM" src="https://user-images.githubusercontent.com/52144063/174420210-e05a3989-06f1-4375-a6f0-14cff7c7c10c.png">
+<img width="1787" alt="Screen Shot 2022-06-18 at 3 36 04 PM" src="https://user-images.githubusercontent.com/52144063/174454974-d03bd5f1-4fcc-41ab-a8c2-a895fd5c2a5e.png">
 
 Second iteration of Playspace, a web app that visualizes video game data.
+
+# Inspiration
+
+https://dribbble.com/shots/15661139-PlayStation-Dashboard
+
+![Screen Shot 2022-06-18 at 3 43 26 PM](https://user-images.githubusercontent.com/52144063/174454967-c22ab726-5d84-4a17-b8b5-375cab7d879e.png)
+
 
 # Next.js + Tailwind CSS Example
 
