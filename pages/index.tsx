@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { Game } from "../types";
 import GameRow from "../components/GameRow";
-import { PlusIcon } from "@heroicons/react/outline";
 
 interface HomeProps {
   allGames: Game[];
@@ -111,17 +110,17 @@ const Home = ({
 export default Home;
 
 export const getServerSideProps = async () => {
-  const BASE_URL = "https://api.rawg.io/api/games";
+  const BASE_URL = "https://api.rawg.io/api";
   const year = new Date().getFullYear();
 
-  const allGamesRes = await axios.get(`${BASE_URL}`, {
+  const allGamesRes = await axios.get(`${BASE_URL}/games`, {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       page_size: 50,
     },
   });
 
-  const anticipatedRes = await axios.get(`${BASE_URL}`, {
+  const anticipatedRes = await axios.get(`${BASE_URL}/games`, {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       dates: `${year - 2}-10-10,${year - 1}-10-10`,
@@ -130,7 +129,7 @@ export const getServerSideProps = async () => {
     },
   });
 
-  const popularGamesRes = await axios.get(`${BASE_URL}`, {
+  const popularGamesRes = await axios.get(`${BASE_URL}/games`, {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       dates: `${year - 1}-01-01,${year - 1}-12-31`,
@@ -139,7 +138,7 @@ export const getServerSideProps = async () => {
     },
   });
 
-  const eaGamesRes = await axios.get(`${BASE_URL}`, {
+  const eaGamesRes = await axios.get(`${BASE_URL}/games`, {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       ordering: "-rating",
@@ -147,7 +146,7 @@ export const getServerSideProps = async () => {
     },
   });
 
-  const playstationRes = await axios.get(`${BASE_URL}`, {
+  const playstationRes = await axios.get(`${BASE_URL}/games`, {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       dates: `${year}-01-01,${year}-12-31`,
@@ -155,7 +154,7 @@ export const getServerSideProps = async () => {
     },
   });
 
-  const xBoxRes = await axios.get(`${BASE_URL}`, {
+  const xBoxRes = await axios.get(`${BASE_URL}/games`, {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       dates: `${year}-01-01,${year}-12-31`,
@@ -163,7 +162,7 @@ export const getServerSideProps = async () => {
     },
   });
 
-  const pcRes = await axios.get(`${BASE_URL}`, {
+  const pcRes = await axios.get(`${BASE_URL}/games`, {
     params: {
       key: `${process.env.NEXT_PUBLIC_API_KEY}`,
       dates: `${year}-01-01,${year}-12-31`,
