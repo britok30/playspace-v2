@@ -69,7 +69,7 @@ const Home = ({
               </a>
             </div>
           )}
-          <section className="flex flex-col space-y-24">
+          <div className="flex flex-col space-y-24">
             <GameRow title="Most played games" games={allGames} />
             <GameRow title="Most anticipated games" games={anticipatedGames} />
             <GameRow title="Popular games" games={popularGames} />
@@ -77,7 +77,7 @@ const Home = ({
             <GameRow title="New Playstation releases" games={playstation} />
             <GameRow title="New Xbox releases" games={xbox} />
             <GameRow title="New PC releases" games={pc} />
-          </section>
+          </div>
         </main>
 
         <div className="bg-[#393e464f] w-[30rem] h-[max-content] rounded-lg mr-20 p-8">
