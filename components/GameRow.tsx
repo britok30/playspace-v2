@@ -8,7 +8,7 @@ enum Direction {
   RIGHT = "right",
 }
 
-const GameRow = ({ games }: { games: Game[] }) => {
+const GameRow = ({ games, title }: { games: Game[]; title: string }) => {
   const gameRowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -28,8 +28,8 @@ const GameRow = ({ games }: { games: Game[] }) => {
   };
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2 w-screen  md:w-[60rem]">
-      <h2 className="text-2xl font-semibold">Most played games</h2>
+    <div className="h-40 space-y-0.5 md:space-y-2 w-screen  md:w-[70rem]">
+      <h2 className="text-2xl font-semibold">{title}</h2>
       <div className="group relative md:ml-2">
         <ChevronLeftIcon
           className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
@@ -42,10 +42,8 @@ const GameRow = ({ games }: { games: Game[] }) => {
           ref={gameRowRef}
         >
           {games.map((game) => (
-            <div>
+            <div key={game.id}>
               <Thumbnail key={game.id} game={game} />
-              <h3 className="font-semibold text-xl">{game.name}</h3>
-              <p className="font-light text-sm">{game.playtime} hrs</p>
             </div>
           ))}
         </div>
