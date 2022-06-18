@@ -1,6 +1,6 @@
 # Playspace V2
 
-<img width="1787" alt="Screen Shot 2022-06-17 at 10 48 17 PM" src="https://user-images.githubusercontent.com/52144063/174419839-94bdfd97-2da2-4b3e-861a-b0e0750f0396.png">
+<img width="1787" alt="Screen Shot 2022-06-17 at 11 01 34 PM" src="https://user-images.githubusercontent.com/52144063/174420210-e05a3989-06f1-4375-a6f0-14cff7c7c10c.png">
 
 Second iteration of Playspace, a web app that visualizes video game data.
 
