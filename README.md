@@ -1,3 +1,9 @@
+# Playspace V2
+
+<img width="1787" alt="Screen Shot 2022-06-17 at 11 01 34 PM" src="https://user-images.githubusercontent.com/52144063/174420210-e05a3989-06f1-4375-a6f0-14cff7c7c10c.png">
+
+Second iteration of Playspace, a web app that visualizes video game data.
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
