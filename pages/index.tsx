@@ -58,6 +58,7 @@ const Home = ({
                   height={500}
                   layout="responsive"
                   objectFit="cover"
+                  alt="main-game-image"
                 />
                 <h1 className="text-4xl w-[72rem] absolute bottom-[10rem] left-20 font-bold">
                   {mainGame.name}
@@ -84,7 +85,10 @@ const Home = ({
           <>
             {mainGame?.short_screenshots.map((sh) => {
               return (
-                <div className="h-28 relative mb-10 opacity-60 hover:opacity-100 hover:scale-105 transition duration-[.4s]">
+                <div
+                  key={sh.id}
+                  className="h-28 relative mb-10 opacity-60 hover:opacity-100 hover:scale-105 transition duration-[.4s]"
+                >
                   <Image
                     className="rounded-lg mb-3"
                     src={sh.image}

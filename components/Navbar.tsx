@@ -1,11 +1,12 @@
 import React from "react";
 import { BellIcon } from "@heroicons/react/outline";
 import { ShoppingCartIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
     <header className="flex justify-between py-6 px-8 mb-12 md:px-16">
-      <img
+      <Image
         src="/playspace.png"
         className="cursor-pointer object-contain"
         width={50}
