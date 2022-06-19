@@ -33,7 +33,7 @@ const GameRow = ({ games, title }: { games: Game[]; title: string }) => {
   };
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2 w-screen md:max-w-[80rem]">
+    <div className="h-40 space-y-0.5 md:space-y-2 w-screen md:max-w-[60rem]">
       <h2 className="text-2xl ml-4 font-semibold mb-8">{title}</h2>
       <div className="group relative md:ml-2">
         <ChevronLeftIcon
