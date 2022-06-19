@@ -40,16 +40,7 @@ const Home = ({
 
             <main className="flex mb-24 xl:px-4">
                 <div className="mr-4">
-                    {mainGame && (
-                        <a
-                            className="cursor-pointer transition duration-[.4s]"
-                            href={`https://rawg.io/games/${mainGame.slug}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <MainImage mainGame={mainGame} />
-                        </a>
-                    )}
+                    {mainGame && <MainImage mainGame={mainGame} />}
                     <div className="flex flex-col space-y-24 ">
                         <GameRow title="Most played games" games={allGames} />
                         <GameRow
