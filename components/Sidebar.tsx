@@ -2,6 +2,7 @@ import React from 'react';
 import { Game } from '../types';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import LibraryView from './LibraryView';
 
 const Sidebar = ({
     mainGame,
@@ -13,7 +14,7 @@ const Sidebar = ({
     const router = useRouter();
     return (
         <div className="bg-[#393e464f] hidden xl:block md:w-[100rem] md:h-[max-content] rounded-lg  p-8">
-            <h3 className="text-sm font-semibold mb-3">Screenshots</h3>
+            <h3 className="text-2xl font-semibold mb-3">Screenshots</h3>
             <>
                 {mainGame?.short_screenshots.map((sh) => {
                     return (
@@ -27,14 +28,17 @@ const Sidebar = ({
                                 alt={`${mainGame.name}-screenshots`}
                                 layout="fill"
                                 objectFit="cover"
+                                priority={true}
                             />
                         </div>
                     );
                 })}
             </>
+            <LibraryView games={games} />
+
             {router.pathname === '/' && (
                 <>
-                    <h3 className="text-sm font-semibold mb-3">Online</h3>
+                    <h3 className="text-2xl font-semibold mb-3">Online</h3>
                     <div className="flex flex-col">
                         {games.slice(0, 5).map((game) => (
                             <div

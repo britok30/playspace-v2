@@ -8,17 +8,16 @@ import MainImage from '../components/MainImage';
 import Sidebar from '../components/Sidebar';
 
 interface XboxProps {
-    xbox: Game[];
+    xBox: Game[];
+    xBoxMeta: Game[];
 }
 
-const Xbox = ({ xbox }: XboxProps) => {
+const Xbox = ({ xBox, xBoxMeta }: XboxProps) => {
     const [mainGame, setMainGame] = useState<Game | null>(null);
     useEffect(() => {
-        if (!xbox) return;
-        setMainGame(
-            xbox[Math.floor(Math.random() * xbox.length)]
-        );
-    }, [xbox]);
+        if (!xBox) return;
+        setMainGame(xBox[Math.floor(Math.random() * xBox.length)]);
+    }, [xBox]);
 
     return (
         <div className="relative min-h-screen">
@@ -42,14 +41,15 @@ const Xbox = ({ xbox }: XboxProps) => {
                         </a>
                     )}
                     <div className="flex flex-col space-y-24 ">
+                        <GameRow title="New Xbox releases" games={xBox} />
                         <GameRow
-                            title="New Xbox releases"
-                            games={xbox}
+                            title="Top rated Xbox games"
+                            games={xBoxMeta}
                         />
                     </div>
                 </div>
 
-                <Sidebar mainGame={mainGame} games={xbox} />
+                <Sidebar mainGame={mainGame} games={xBox} />
             </main>
         </div>
     );
@@ -61,7 +61,7 @@ export const getServerSideProps = async () => {
     const BASE_URL = 'https://api.rawg.io/api';
     const year = new Date().getFullYear();
 
-    const xBoxRes = await axios.get(`${BASE_URL}/games`, {
+    const xBoxReq = axios.get(`${BASE_URL}/games`, {
         params: {
             key: `${process.env.NEXT_PUBLIC_API_KEY}`,
             dates: `${year}-01-01,${year}-12-31`,
@@ -69,9 +69,20 @@ export const getServerSideProps = async () => {
         },
     });
 
+    const xBoxMetaReq = axios.get(`${BASE_URL}/games`, {
+        params: {
+            key: `${process.env.NEXT_PUBLIC_API_KEY}`,
+            metacritic: `90,100`,
+            platforms: 18,
+        },
+    });
+
+    const [xBoxRes, xBoxMetaRes] = await Promise.all([xBoxReq, xBoxMetaReq]);
+
     return {
         props: {
-            xbox: xBoxRes.data.results,
+            xBox: xBoxRes.data.results,
+            xBoxMeta: xBoxMetaRes.data.results,
         },
     };
 };
