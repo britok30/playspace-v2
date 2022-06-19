@@ -9,13 +9,15 @@ import Sidebar from '../components/Sidebar';
 
 interface PcProps {
     pc: Game[];
+    pcMeta: Game[];
 }
 
-const Pc = ({ pc }: PcProps) => {
+const Pc = ({ pc, pcMeta }: PcProps) => {
     const [mainGame, setMainGame] = useState<Game | null>(null);
+
     useEffect(() => {
         if (!pc) return;
-        setMainGame(pc[Math.floor(Math.random() *pc.length)]);
+        setMainGame(pc[Math.floor(Math.random() * pc.length)]);
     }, [pc]);
 
     return (
@@ -40,7 +42,8 @@ const Pc = ({ pc }: PcProps) => {
                         </a>
                     )}
                     <div className="flex flex-col space-y-24 ">
-                        <GameRow title="New Xbox releases" games={pc} />
+                        <GameRow title="New PC releases" games={pc} />
+                        <GameRow title="Top rated PC games" games={pcMeta} />
                     </div>
                 </div>
 
@@ -56,7 +59,7 @@ export const getServerSideProps = async () => {
     const BASE_URL = 'https://api.rawg.io/api';
     const year = new Date().getFullYear();
 
-    const pcRes = await axios.get(`${BASE_URL}/games`, {
+    const pcReq = axios.get(`${BASE_URL}/games`, {
         params: {
             key: `${process.env.NEXT_PUBLIC_API_KEY}`,
             dates: `${year}-01-01,${year}-12-31`,
@@ -64,9 +67,20 @@ export const getServerSideProps = async () => {
         },
     });
 
+    const pcMetaReq = axios.get(`${BASE_URL}/games`, {
+        params: {
+            key: `${process.env.NEXT_PUBLIC_API_KEY}`,
+            metacritic: `90,100`,
+            platforms: 4,
+        },
+    });
+
+    const [pcRes, pcMetaRes] = await Promise.all([pcReq, pcMetaReq]);
+
     return {
         props: {
             pc: pcRes.data.results,
+            pcMeta: pcMetaRes.data.results,
         },
     };
 };
