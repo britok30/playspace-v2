@@ -22,7 +22,7 @@ const MainImage = ({ mainGame }: { mainGame: Game | null }) => {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <h1 className="text-4xl md:text-8xl hover:cursor-pointer absolute bottom-[10rem] left-10 md:left-20 font-bold">
+                <h1 className="text-4xl md:text-8xl hover:cursor-pointer hover:opacity-80  transition duration-[.4s] absolute bottom-[10rem] left-10 md:left-20 font-bold">
                     {mainGame.name}
                 </h1>
             </a>
