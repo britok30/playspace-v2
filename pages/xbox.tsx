@@ -28,18 +28,9 @@ const Xbox = ({ xBox, xBoxMeta }: XboxProps) => {
 
             <Navbar />
 
-            <main className="flex mb-24 xl:px-4">
-                <div className="mr-4">
-                    {mainGame && (
-                        <a
-                            className="cursor-pointer transition duration-[.4s]"
-                            href={`https://rawg.io/games/${mainGame.slug}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <MainImage mainGame={mainGame} />
-                        </a>
-                    )}
+            <main className="md:grid md:grid-cols-6 mb-24 md:px-4">
+                <div className="md:mr-4 md:col-span-4">
+                    <div>{mainGame && <MainImage mainGame={mainGame} />}</div>
                     <div className="flex flex-col space-y-24 ">
                         <GameRow title="New Xbox releases" games={xBox} />
                         <GameRow

@@ -13,7 +13,7 @@ const Sidebar = ({
 }) => {
     const router = useRouter();
     return (
-        <div className="bg-[#393e464f] hidden xl:block md:w-[100rem] md:h-[max-content] rounded-lg  p-8">
+        <div className="bg-[#393e464f] hidden md:col-span-2 md:block md:h-[max-content] rounded-lg p-8">
             <h3 className="text-2xl font-semibold mb-3">Screenshots</h3>
             <>
                 {mainGame?.short_screenshots.map((sh) => {
@@ -54,13 +54,13 @@ const Sidebar = ({
                                         objectFit="cover"
                                     />
                                 </div>
-                                <div className="absolute left-24 top-5">
-                                    <p className="font-semibold">
+                                <div className="absolute left-24 top-5 w-24">
+                                    <p className="font-semibold truncate">
                                         Ghost #{game.id}
                                     </p>
-                                    <span className="font-light text-gray-400">
+                                    <p className="font-light text-gray-400 truncate">
                                         Playing {game.name}
-                                    </span>
+                                    </p>
                                 </div>
                             </div>
                         ))}

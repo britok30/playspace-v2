@@ -7,7 +7,7 @@ const MainImage = ({ mainGame }: { mainGame: Game | null }) => {
 
     return (
         <div className="relative">
-            <div className="relative mb-10 -z-10 w-screen md:max-w-[60rem] h-[60vh]">
+            <div className="relative mb-10 -z-10 h-[60vh]">
                 <Image
                     className="rounded-lg opacity-40"
                     src={mainGame?.background_image}
@@ -22,7 +22,7 @@ const MainImage = ({ mainGame }: { mainGame: Game | null }) => {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <h1 className="text-4xl md:text-8xl hover:cursor-pointer hover:opacity-80  transition duration-[.4s] absolute bottom-[10rem] left-10 md:left-20 font-bold">
+                <h1 className="text-4xl md:text-6xl hover:cursor-pointer hover:opacity-80 transition duration-[.4s] absolute bottom-[10rem] left-10 md:left-20 font-bold">
                     {mainGame.name}
                 </h1>
             </a>

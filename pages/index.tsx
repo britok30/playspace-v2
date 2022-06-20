@@ -38,10 +38,11 @@ const Home = ({
 
             <Navbar />
 
-            <main className="flex mb-24 xl:px-4">
-                <div className="mr-4">
-                    {mainGame && <MainImage mainGame={mainGame} />}
-                    <div className="flex flex-col space-y-24 ">
+            <main className="md:grid md:grid-cols-6 mb-24 md:px-4">
+                <div className="md:mr-4 md:col-span-4">
+                    <div>{mainGame && <MainImage mainGame={mainGame} />}</div>
+
+                    <div className="flex flex-col space-y-24">
                         <GameRow title="Most played games" games={allGames} />
                         <GameRow
                             title="Most anticipated games"
