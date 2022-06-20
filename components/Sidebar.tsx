@@ -54,11 +54,11 @@ const Sidebar = ({
                                         objectFit="cover"
                                     />
                                 </div>
-                                <div className="absolute left-24 top-5 w-24">
-                                    <p className="font-semibold truncate">
+                                <div className="absolute left-24 top-5">
+                                    <p className="font-semibold">
                                         Ghost #{game.id}
                                     </p>
-                                    <p className="font-light text-gray-400 truncate">
+                                    <p className="font-light text-gray-400">
                                         Playing {game.name}
                                     </p>
                                 </div>
